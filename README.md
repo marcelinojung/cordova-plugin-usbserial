@@ -252,7 +252,7 @@ void loop() {
 
 ### Your Device is not (yet) known?
 
-Thanks to [usb-serial-for-android](https://github.com/mik3y/usb-serial-for-android) library, you can communicate with CDC, FTDI, Arduino and other devices. 
+Thanks to [usb-serial-for-android](https://github.com/mik3y/usb-serial-for-android) library 3.5.1, you can communicate with CDC, FTDI, Arduino and other devices. 
 
 Your device might not be listed over at https://github.com/mik3y/usb-serial-for-android .
 If you know your devices VID (Vendor ID) and PID (Product ID) you could however try 

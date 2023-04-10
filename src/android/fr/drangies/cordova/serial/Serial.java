@@ -311,8 +311,8 @@ public class Serial extends CordovaPlugin {
 					try {
 						Log.d(TAG, data);
 						byte[] buffer = hexStringToByteArray(data);
-						int result = port.write(buffer, 1000);
-						callbackContext.success(result + " bytes written.");
+						port.write(buffer, 1000);
+						callbackContext.success( " bytes written.");
 					}
 					catch (IOException e) {
 						// deal with error
@@ -392,9 +392,11 @@ public class Serial extends CordovaPlugin {
 				try {
 					// Make sure we don't die if we try to close an non-existing port!
 					if (port != null) {
+						port.setDTR(false);
+						port.setRTS(false);
 						port.close();
 					}
-					port = null;
+					//port = null;
 					callbackContext.success();
 				}
 				catch (IOException e) {

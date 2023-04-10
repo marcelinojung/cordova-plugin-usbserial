@@ -1,7 +1,36 @@
 {
-  "name": "cordovarduino",
-  "version": "0.0.10",
-  "description": "Cordova plugin to communicate with the android USB serial port",
+  "_from": "cordovarduino",
+  "_id": "cordovarduino@0.0.10",
+  "_inBundle": false,
+  "_integrity": "sha512-W3wcmuCiDJnUv73y91eEeP1zC+rqzmvgEzlnQ0I4wrX3fJ89VEV7RZzqk9tpcwz1HSOxE2OdIknevPUoaxmbCg==",
+  "_location": "/cordovarduino",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordovarduino",
+    "name": "cordovarduino",
+    "escapedName": "cordovarduino",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordovarduino/-/cordovarduino-0.0.10.tgz",
+  "_shasum": "6cf7a8a3d458db218565141c59a0c756a79ca890",
+  "_spec": "cordovarduino",
+  "_where": "C:\\Users\\devendra.negi\\Desktop\\VOD\\2023\\android-beverage-package",
+  "author": {
+    "name": "Xavier Seignard",
+    "email": "xavier.seignard@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/xseignard/cordovarduino/issues"
+  },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordovarduino",
     "platforms": [
@@ -9,10 +38,9 @@
       "ubuntu"
     ]
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xseignard/cordovarduino.git"
-  },
+  "deprecated": false,
+  "description": "Cordova plugin to communicate with the android USB serial port",
+  "homepage": "https://github.com/xseignard/cordovarduino#readme",
   "keywords": [
     "serial",
     "arduino",
@@ -20,10 +48,11 @@
     "cordova-android",
     "cordova-ubuntu"
   ],
-  "author": "Xavier Seignard <xavier.seignard@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/xseignard/cordovarduino/issues"
+  "name": "cordovarduino",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xseignard/cordovarduino.git"
   },
-  "homepage": "https://github.com/xseignard/cordovarduino#readme"
+  "version": "0.0.10"
 }

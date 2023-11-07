@@ -79,7 +79,7 @@ public class Serial extends CordovaPlugin {
 	private final SerialInputOutputManager.Listener mListener = new SerialInputOutputManager.Listener() {
 		@Override
 		public void onRunError(Exception e) {
-			Log.d(TAG, "Runner stopped.");
+			// Log.d(TAG, "Runner stopped.");
 		}
 
 		@Override
@@ -99,7 +99,7 @@ public class Serial extends CordovaPlugin {
 	 */
 	@Override
 	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-		Log.d(TAG, "Action: " + action);
+		// // Log.d(TAG, "Action: " + action);
 		JSONObject arg_object = args.optJSONObject(0);
 		// request permission
 		if (ACTION_REQUEST_PERMISSION.equals(action)) {
@@ -177,7 +177,7 @@ public class Serial extends CordovaPlugin {
 					} else if (driver.equals("Ch34xSerialDriver")) {
 						customTable.addProduct(vid, pid, Ch34xSerialDriver.class);
 					} else {
-						Log.d(TAG, "Unknown driver!");
+						// Log.d(TAG, "Unknown driver!");
 						callbackContext.error("Unknown driver!");
 					}
 
@@ -208,7 +208,7 @@ public class Serial extends CordovaPlugin {
 					manager.requestPermission(device, pendingIntent);
 				} else {
 					// no available drivers
-					Log.d(TAG, "No device found!");
+					// Log.d(TAG, "No device found!");
 					callbackContext.error("No device found!");
 				}
 			}
@@ -248,18 +248,18 @@ public class Serial extends CordovaPlugin {
 							port.setRTS(true);
 					} catch (IOException e) {
 						// deal with error
-						Log.d(TAG, e.getMessage());
+						// Log.d(TAG, e.getMessage());
 						callbackContext.error(e.getMessage());
 					} catch (JSONException e) {
 						// deal with error
-						Log.d(TAG, e.getMessage());
+						// Log.d(TAG, e.getMessage());
 						callbackContext.error(e.getMessage());
 					}
 
-					Log.d(TAG, "Serial port opened!");
+					// Log.d(TAG, "Serial port opened!");
 					callbackContext.success("Serial port opened!");
 				} else {
-					Log.d(TAG, "Cannot connect to the device!");
+					// Log.d(TAG, "Cannot connect to the device!");
 					callbackContext.error("Cannot connect to the device!");
 				}
 				onDeviceStateChange();
@@ -281,13 +281,13 @@ public class Serial extends CordovaPlugin {
 					callbackContext.error("Writing a closed port.");
 				} else {
 					try {
-						Log.d(TAG, data);
+						// // Log.d(TAG, data);
 						byte[] buffer = data.getBytes();
 						port.write(buffer, 1000);
 						callbackContext.success();
 					} catch (IOException e) {
 						// deal with error
-						Log.d(TAG, e.getMessage());
+						// Log.d(TAG, e.getMessage());
 						callbackContext.error(e.getMessage());
 					}
 				}
@@ -310,13 +310,13 @@ public class Serial extends CordovaPlugin {
 					callbackContext.error("Writing a closed port.");
 				} else {
 					try {
-						Log.d(TAG, data);
+						// // Log.d(TAG, data);
 						byte[] buffer = hexStringToByteArray(data);
 						port.write(buffer, 1000);
 						callbackContext.success(" bytes written.");
 					} catch (IOException e) {
 						// deal with error
-						Log.d(TAG, e.getMessage());
+						// Log.d(TAG, e.getMessage());
 						callbackContext.error(e.getMessage());
 					}
 				}
@@ -361,7 +361,7 @@ public class Serial extends CordovaPlugin {
 						// receiver to check that len > 0
 						PluginResult.Status status = PluginResult.Status.OK;
 						if (len > 0) {
-							Log.d(TAG, "Read data len=" + len);
+							// // Log.d(TAG, "Read data len=" + len);
 							final byte[] data = new byte[len];
 							mReadBuffer.get(data, 0, len);
 							mReadBuffer.clear();
@@ -372,7 +372,7 @@ public class Serial extends CordovaPlugin {
 						}
 					} catch (IOException e) {
 						// deal with error
-						Log.d(TAG, e.getMessage());
+						// Log.d(TAG, e.getMessage());
 						callbackContext.error(e.getMessage());
 					}
 				}
@@ -399,7 +399,7 @@ public class Serial extends CordovaPlugin {
 					callbackContext.success();
 				} catch (IOException e) {
 					// deal with error
-					Log.d(TAG, e.getMessage());
+					// Log.d(TAG, e.getMessage());
 					callbackContext.error(e.getMessage());
 				}
 				onDeviceStateChange();
@@ -456,10 +456,10 @@ public class Serial extends CordovaPlugin {
 	 * @param callbackContext the cordova {@link CallbackContext}
 	 */
 	private void registerReadCallback(final CallbackContext callbackContext) {
-		Log.d(TAG, "Registering callback");
+		// Log.d(TAG, "Registering callback");
 		cordova.getThreadPool().execute(new Runnable() {
 			public void run() {
-				Log.d(TAG, "Registering Read Callback");
+				// Log.d(TAG, "Registering Read Callback");
 				readCallback = callbackContext;
 				JSONObject returnObj = new JSONObject();
 				addProperty(returnObj, "registerReadCallback", "true");
@@ -500,10 +500,10 @@ public class Serial extends CordovaPlugin {
 	 */
 	@Override
 	public void onResume(boolean multitasking) {
-		Log.d(TAG, "Resumed, driver=" + driver);
+		// Log.d(TAG, "Resumed, driver=" + driver);
 		if (sleepOnPause) {
 			if (driver == null) {
-				Log.d(TAG, "No serial device to resume.");
+				// Log.d(TAG, "No serial device to resume.");
 			} else {
 				UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
 				if (connection != null) {
@@ -518,13 +518,13 @@ public class Serial extends CordovaPlugin {
 							port.setRTS(true);
 					} catch (IOException e) {
 						// deal with error
-						Log.d(TAG, e.getMessage());
+						// Log.d(TAG, e.getMessage());
 					}
-					Log.d(TAG, "Serial port opened!");
+					// Log.d(TAG, "Serial port opened!");
 				} else {
-					Log.d(TAG, "Cannot connect to the device!");
+					// Log.d(TAG, "Cannot connect to the device!");
 				}
-				Log.d(TAG, "Serial device: " + driver.getClass().getSimpleName());
+				// Log.d(TAG, "Serial device: " + driver.getClass().getSimpleName());
 			}
 
 			onDeviceStateChange();
@@ -538,14 +538,14 @@ public class Serial extends CordovaPlugin {
 	 */
 	@Override
 	public void onDestroy() {
-		Log.d(TAG, "Destroy, port=" + port);
+		// Log.d(TAG, "Destroy, port=" + port);
 		if (port != null) {
 			try {
 				port.setDTR(false);
 				port.setRTS(false);
 				port.close();
 			} catch (IOException e) {
-				Log.d(TAG, e.getMessage());
+				// Log.d(TAG, e.getMessage());
 			}
 		}
 		onDeviceStateChange();
